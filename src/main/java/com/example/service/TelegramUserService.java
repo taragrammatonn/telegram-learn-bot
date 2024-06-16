@@ -6,7 +6,7 @@ public interface TelegramUserService {
 
     User findById(Long id);
 
-    User save(User user);
+    User save(Long id, User user);
 
     boolean deleteById(Long userId);
 }
