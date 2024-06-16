@@ -13,12 +13,12 @@ public class TelegramUserServiceImpl implements TelegramUserService {
 
     @Override
     public User findById(Long id) {
-        return null;
+        userDAO.findById(id);
     }
 
     @Override
-    public User save(User user) {
-        return null;
+    public User save(Long id, User user) {
+        return userDAO.save(id, user);
     }
 
     @Override

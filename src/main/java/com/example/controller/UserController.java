@@ -4,9 +4,7 @@ import com.example.dao.model.User;
 import com.example.service.TelegramUserService;
 import com.example.service.TelegramUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -25,4 +23,14 @@ public class UserController {
         return Optional.of(telegramUserService.findById(Long.valueOf(userId)));
     }
 
+    @PutMapping("/user/{userId}")
+    public Optional<User> save(@PathVariable String userId, @RequestBody User user) {
+        return Optional.of(telegramUserService.save(Long.valueOf(userId), user));
+    }
+
+    @PostMapping("/user/{userId}")
+    public boolean deleteById(@PathVariable String userId) {
+        telegramUserService.deleteById(Long.valueOf(userId));
+        return true;
+    }
 }
