@@ -2,9 +2,11 @@ package com.example.service;
 
 import com.example.dao.model.User;
 
+import java.util.Optional;
+
 public interface TelegramUserService {
 
-    User findById(Long id);
+    Optional<User> findById(Long id);
 
     User save(Long id, User user);
 
