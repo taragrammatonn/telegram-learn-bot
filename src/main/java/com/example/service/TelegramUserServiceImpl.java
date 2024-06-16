@@ -32,10 +32,10 @@ public class TelegramUserServiceImpl implements TelegramUserService {
 
     @Override
     public User save(Long id, User user) {
-        var referenceById = userDAO.getReferenceById(user.getId());
-        if (referenceById != null) {
-            return user.updateUser(user, referenceById);
-        }
+//        var referenceById = userDAO.getReferenceById(user.getId());
+//        if (referenceById != null) {
+//            return user.updateUser(user, referenceById);
+//        }
         return userDAO.save(user);
     }
 

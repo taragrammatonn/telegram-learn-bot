@@ -32,7 +32,6 @@ public class UserController {
 
     @PostMapping("/user/{userId}")
     public boolean deleteById(@PathVariable String userId) {
-        telegramUserService.deleteById(Long.valueOf(userId));
-        return true;
+        return telegramUserService.deleteById(Long.valueOf(userId));
     }
 }
