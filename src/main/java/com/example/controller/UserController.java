@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
+
 @RestController("/api")
 public class UserController {
 
@@ -18,9 +20,9 @@ public class UserController {
         this.telegramUserService = telegramUserService;
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping(value = "/user/{userId}", produces = APPLICATION_JSON_VALUE)
     public Optional<User> user(@RequestParam String userId) {
-        return Optional.of(telegramUserService.findById(Long.valueOf(userId)));
+        return telegramUserService.findById(Long.valueOf(userId));
     }
 
     @PutMapping("/user/{userId}")
