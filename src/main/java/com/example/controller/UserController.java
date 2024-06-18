@@ -10,7 +10,8 @@ import java.util.Optional;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
-@RestController("/api")
+@RestController
+@RequestMapping("/api")
 public class UserController {
 
     private final TelegramUserService telegramUserService;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/user/{userId}", produces = APPLICATION_JSON_VALUE)
-    public Optional<User> user(@RequestParam String userId) {
+    public Optional<User> user(@PathVariable String userId) {
         return telegramUserService.findById(Long.valueOf(userId));
     }
 
