@@ -1,19 +1,23 @@
 package com.example.service;
 
+import org.junit.jupiter.api.Tag;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
+import org.springframework.core.annotation.AliasFor;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.*;
 
-@Profile("integration")
+@Target(ElementType.TYPE)
+@Tag("integration")
+@Documented
+@Inherited
 @AutoConfigureMockMvc
 @Retention(RetentionPolicy.RUNTIME)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@EnableAutoConfiguration
 public @interface IntegrationTest {
+
+    @AliasFor(annotation = EnableAutoConfiguration.class)
+    Class<?>[] exclude() default {};
 }
