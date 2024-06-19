@@ -20,16 +20,14 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Cache Maven packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4.0.2
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Prepare Maven Wrapper
-        run: chmod +x mvnw
       - name: Maven compile
         run: mvn compile
       - name: Maven Unit Test
-        run: mvn test -P unit
+        run: mvn test -Dgroups=unit
       - name: Maven Integration Test
-        run: mvn test -P integration
+        run: mvn test -Dgroups=integration
