@@ -11,5 +11,4 @@ public class UserFactory {
     public static User aUserWithId() {
         return new User(1L, "John", "Doe");
     }
-
 }
