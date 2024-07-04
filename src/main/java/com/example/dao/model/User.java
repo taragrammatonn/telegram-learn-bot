@@ -1,9 +1,8 @@
 package com.example.dao.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity(name = "User")
 @Table(schema = "users", name = "User")
@@ -18,6 +17,9 @@ public class User {
 
     @Column(name = "l_name")
     private String lName;
+
+    @OneToMany(mappedBy = "transaction")
+    private List<Transaction> transaction;
 
     public User(Long id, String fName, String lName) {
         this.id = id;
@@ -58,5 +60,13 @@ public class User {
 
     public void setlName(String lName) {
         this.lName = lName;
+    }
+
+    public List<Transaction> getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(List<Transaction> transaction) {
+        this.transaction = transaction;
     }
 }
