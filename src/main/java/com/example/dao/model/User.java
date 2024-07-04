@@ -16,10 +16,10 @@ public class User {
     private Long id;
 
     @Column(name = "f_name")
-    String fName;
+    private String fName;
 
     @Column(name = "l_name")
-    String lName;
+    private String lName;
 
     public User(Long id, String fName, String lName) {
         this.id = id;
@@ -32,9 +32,7 @@ public class User {
         this.lName = lName;
     }
 
-    public User() {
-
-    }
+    public User() {}
 
     public User updateUser(User newUser, User oldUser) {
         return new User(newUser.getfName(), newUser.getlName());
